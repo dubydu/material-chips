@@ -1,0 +1,13 @@
+/* 
+  Localizable.strings
+  ios-chips
+
+  Created by DU on 12/8/19.
+  
+*/
+
+// MARK: - Tabbar
+"TABBAR_HOME" = "Home";
+"TABBAR_CLOUDED" = "Clouded";
+"TABBAR_SHARED" = "Shared";
+"TABBAR_SAVED" = "Saved";

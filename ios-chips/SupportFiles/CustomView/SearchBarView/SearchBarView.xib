@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchBarView" customModule="Chips_Dev" customModuleProvider="target">
+            <connections>
+                <outlet property="activityIndicatorView" destination="GzG-Qx-Esf" id="xDg-xC-JI6"/>
+                <outlet property="contentView" destination="Mjo-pJ-OJR" id="BT5-n3-u3M"/>
+                <outlet property="searchImageView" destination="ek9-bl-Vvh" id="b7d-ZG-Yf8"/>
+                <outlet property="searchTextField" destination="CJI-Rd-11P" id="O2f-K8-Bjl"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mjo-pJ-OJR">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
+                    <subviews>
+                        <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Search" adjustsFontSizeToFit="NO" minimumFontSize="16" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="CJI-Rd-11P">
+                            <rect key="frame" x="52" y="6" width="317" height="38"/>
+                            <color key="tintColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <color key="textColor" red="0.396078431372549" green="0.396078431372549" blue="0.396078431372549" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <textInputTraits key="textInputTraits" returnKeyType="search"/>
+                        </textField>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fDN-Kk-DYD">
+                            <rect key="frame" x="10" y="7" width="36" height="36"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_search_outlined" translatesAutoresizingMaskIntoConstraints="NO" id="ek9-bl-Vvh">
+                                    <rect key="frame" x="1" y="1" width="34" height="34"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="ek9-bl-Vvh" secondAttribute="height" multiplier="1:1" id="xk5-LA-Thz"/>
+                                    </constraints>
+                                </imageView>
+                                <activityIndicatorView hidden="YES" opaque="NO" alpha="0.0" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="GzG-Qx-Esf">
+                                    <rect key="frame" x="8" y="8" width="20" height="20"/>
+                                </activityIndicatorView>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstItem="GzG-Qx-Esf" firstAttribute="centerX" secondItem="fDN-Kk-DYD" secondAttribute="centerX" id="7GP-5h-hvq"/>
+                                <constraint firstAttribute="width" secondItem="fDN-Kk-DYD" secondAttribute="height" multiplier="1:1" id="B9i-hL-gD1"/>
+                                <constraint firstAttribute="bottom" secondItem="ek9-bl-Vvh" secondAttribute="bottom" constant="1" id="F1E-dl-hQ9"/>
+                                <constraint firstItem="ek9-bl-Vvh" firstAttribute="leading" secondItem="fDN-Kk-DYD" secondAttribute="leading" constant="1" id="Qgl-gm-mdL"/>
+                                <constraint firstAttribute="trailing" secondItem="ek9-bl-Vvh" secondAttribute="trailing" constant="1" id="SW1-FS-2kH"/>
+                                <constraint firstItem="ek9-bl-Vvh" firstAttribute="top" secondItem="fDN-Kk-DYD" secondAttribute="top" constant="1" id="ZPk-FQ-sYN"/>
+                                <constraint firstItem="GzG-Qx-Esf" firstAttribute="centerY" secondItem="fDN-Kk-DYD" secondAttribute="centerY" id="gjM-8E-Uca"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstAttribute="bottom" secondItem="fDN-Kk-DYD" secondAttribute="bottom" constant="7" id="DSE-JL-UhJ"/>
+                        <constraint firstAttribute="trailing" secondItem="CJI-Rd-11P" secondAttribute="trailing" constant="6" id="WHx-al-6UC"/>
+                        <constraint firstItem="CJI-Rd-11P" firstAttribute="top" secondItem="Mjo-pJ-OJR" secondAttribute="top" constant="6" id="j5f-Mg-J6A"/>
+                        <constraint firstItem="CJI-Rd-11P" firstAttribute="leading" secondItem="fDN-Kk-DYD" secondAttribute="trailing" constant="6" id="kTa-6z-Qf8"/>
+                        <constraint firstItem="fDN-Kk-DYD" firstAttribute="top" secondItem="Mjo-pJ-OJR" secondAttribute="top" constant="7" id="oqy-iu-ssa"/>
+                        <constraint firstItem="fDN-Kk-DYD" firstAttribute="leading" secondItem="Mjo-pJ-OJR" secondAttribute="leading" constant="10" id="tiB-8J-9vf"/>
+                        <constraint firstAttribute="bottom" secondItem="CJI-Rd-11P" secondAttribute="bottom" constant="6" id="vYo-Cj-G8h"/>
+                    </constraints>
+                    <userDefinedRuntimeAttributes>
+                        <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                            <real key="value" value="4"/>
+                        </userDefinedRuntimeAttribute>
+                        <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
+                            <color key="value" red="0.64908522369999999" green="0.71644634009999997" blue="0.76863771680000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                        </userDefinedRuntimeAttribute>
+                    </userDefinedRuntimeAttributes>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="Mjo-pJ-OJR" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="4wY-Xh-E5M"/>
+                <constraint firstAttribute="bottom" secondItem="Mjo-pJ-OJR" secondAttribute="bottom" id="8kL-A2-1Nm"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="Mjo-pJ-OJR" secondAttribute="trailing" id="D1T-BQ-mei"/>
+                <constraint firstItem="Mjo-pJ-OJR" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="gxk-Ro-wcO"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="-34.399999999999999" y="-17.991004497751124"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="ic_search_outlined" width="24" height="24"/>
+    </resources>
+</document>
