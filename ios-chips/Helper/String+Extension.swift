@@ -29,4 +29,16 @@ extension String {
         }
         return  attrString
     }
+    
+
+    func trimStringBasedWidthSize(fontSize: CGFloat, restBound: CGFloat = 65) -> String? {
+        let stringBounding = self.size(withAttributes: [.font: UIFont.systemFont(ofSize: fontSize)])
+        var newString = self
+        
+        if stringBounding.width > (UIScreen.main.bounds.width - restBound) {
+            newString = "\(newString.dropLast(15))" + "..."
+            return trimStringBasedWidthSize(fontSize: fontSize, restBound: restBound)
+        }
+        return newString
+    }
 }

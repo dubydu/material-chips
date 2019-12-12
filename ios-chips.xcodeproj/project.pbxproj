@@ -52,6 +52,10 @@
 		81A818E2239CE6F3008F8AC6 /* AppIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A818E1239CE6F3008F8AC6 /* AppIcon.swift */; };
 		81A818E4239CE889008F8AC6 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A818E3239CE889008F8AC6 /* AppColor.swift */; };
 		81A818E6239CE8B8008F8AC6 /* Color.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81A818E5239CE8B8008F8AC6 /* Color.swift */; };
+		81C9B41D23A1E74C0098E72A /* RelatedJobsObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C9B41C23A1E74C0098E72A /* RelatedJobsObject.swift */; };
+		81C9B42023A1EBA30098E72A /* JobSectionHeaderItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C9B41E23A1EBA30098E72A /* JobSectionHeaderItem.swift */; };
+		81C9B42123A1EBA30098E72A /* JobSectionHeaderItem.xib in Resources */ = {isa = PBXBuildFile; fileRef = 81C9B41F23A1EBA30098E72A /* JobSectionHeaderItem.xib */; };
+		81C9B42323A21B070098E72A /* ExpertiseObject.swift in Sources */ = {isa = PBXBuildFile; fileRef = 81C9B42223A21B070098E72A /* ExpertiseObject.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,6 +127,10 @@
 		81A818E1239CE6F3008F8AC6 /* AppIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppIcon.swift; sourceTree = "<group>"; };
 		81A818E3239CE889008F8AC6 /* AppColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppColor.swift; sourceTree = "<group>"; };
 		81A818E5239CE8B8008F8AC6 /* Color.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Color.swift; sourceTree = "<group>"; };
+		81C9B41C23A1E74C0098E72A /* RelatedJobsObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RelatedJobsObject.swift; sourceTree = "<group>"; };
+		81C9B41E23A1EBA30098E72A /* JobSectionHeaderItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JobSectionHeaderItem.swift; sourceTree = "<group>"; };
+		81C9B41F23A1EBA30098E72A /* JobSectionHeaderItem.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = JobSectionHeaderItem.xib; sourceTree = "<group>"; };
+		81C9B42223A21B070098E72A /* ExpertiseObject.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpertiseObject.swift; sourceTree = "<group>"; };
 		8DC00D57E5A314E37296D5F3 /* Pods-ios-chips.staging release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-chips.staging release.xcconfig"; path = "Target Support Files/Pods-ios-chips/Pods-ios-chips.staging release.xcconfig"; sourceTree = "<group>"; };
 		A66E7811BDE172071C99FDF0 /* Pods-ios-chips.dev release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-chips.dev release.xcconfig"; path = "Target Support Files/Pods-ios-chips/Pods-ios-chips.dev release.xcconfig"; sourceTree = "<group>"; };
 		CC3E736FCA8D2887057C691B /* Pods-ios-chips.dev.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ios-chips.dev.xcconfig"; path = "Target Support Files/Pods-ios-chips/Pods-ios-chips.dev.xcconfig"; sourceTree = "<group>"; };
@@ -208,6 +216,8 @@
 			children = (
 				811E9A1B239E2FC100D4384F /* Error */,
 				811E9A1C239E313700D4384F /* JobsObject.swift */,
+				81C9B41C23A1E74C0098E72A /* RelatedJobsObject.swift */,
+				81C9B42223A21B070098E72A /* ExpertiseObject.swift */,
 			);
 			path = Object;
 			sourceTree = "<group>";
@@ -424,6 +434,7 @@
 		81A818C1239CE303008F8AC6 /* Home */ = {
 			isa = PBXGroup;
 			children = (
+				81BA39DD23A0EC460047B1AC /* SectionCollectionCell */,
 				811E9A23239E490400D4384F /* CollectionCell */,
 				81A818C5239CE352008F8AC6 /* HomeVC.swift */,
 				81A818C6239CE352008F8AC6 /* HomeVC.xib */,
@@ -464,6 +475,15 @@
 				81A818DE239CE560008F8AC6 /* Localizable.strings */,
 			);
 			path = Languages;
+			sourceTree = "<group>";
+		};
+		81BA39DD23A0EC460047B1AC /* SectionCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				81C9B41E23A1EBA30098E72A /* JobSectionHeaderItem.swift */,
+				81C9B41F23A1EBA30098E72A /* JobSectionHeaderItem.xib */,
+			);
+			path = SectionCollectionCell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -573,6 +593,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				811E9A08239E052600D4384F /* SearchBarView.xib in Resources */,
+				81C9B42123A1EBA30098E72A /* JobSectionHeaderItem.xib in Resources */,
 				81A818D4239CE380008F8AC6 /* SavedVC.xib in Resources */,
 				81A81882239CC2A4008F8AC6 /* LaunchScreen.storyboard in Resources */,
 				81A818C8239CE352008F8AC6 /* HomeVC.xib in Resources */,
@@ -671,14 +692,17 @@
 				811E9A13239E2F1C00D4384F /* HomePresenter.swift in Sources */,
 				811E9A2B239E4F6800D4384F /* UICollectionView+Extension.swift in Sources */,
 				812AB158239F87670031F8F1 /* CustomTextView.swift in Sources */,
+				81C9B42023A1EBA30098E72A /* JobSectionHeaderItem.swift in Sources */,
 				811E9A1A239E2FAB00D4384F /* ErrorObject.swift in Sources */,
 				811E9A26239E492900D4384F /* JobsItem.swift in Sources */,
 				81A818D3239CE380008F8AC6 /* SavedVC.swift in Sources */,
 				81A818D6239CE431008F8AC6 /* AppText.swift in Sources */,
 				811E9A1D239E313700D4384F /* JobsObject.swift in Sources */,
+				81C9B41D23A1E74C0098E72A /* RelatedJobsObject.swift in Sources */,
 				81A818E0239CE643008F8AC6 /* Localizable.swift in Sources */,
 				81A818CB239CE363008F8AC6 /* CloudedVC.swift in Sources */,
 				812AB155239F80280031F8F1 /* String+Extension.swift in Sources */,
+				81C9B42323A21B070098E72A /* ExpertiseObject.swift in Sources */,
 				811E9A29239E4B6A00D4384F /* UITableView+Extension.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

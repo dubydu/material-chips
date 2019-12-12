@@ -10,6 +10,31 @@ import Foundation
 class HomePresenter: BasePresenter {
     weak var delegate: HomeDelegate?
     
+    func getListRelatedJobs(uuid: String) {
+        NetworkUtils.shared.request(url: AppURL.getRelatedJobs(uuid: uuid), method: .requestTypeGet, param: nil, header: nil, taskId: nil, completion: { [weak self] (statusCode, data) in
+            guard let `self` = self else { return }
+            let response = self.processResponseData(statusCode: statusCode, data: data, objectConvert: RelatedJobsObject.self)
+            let errorMessage = response.errorMessage
+            let responseData = response.responseData
+            
+            if let errorMessage = errorMessage, !errorMessage.isEmpty {
+                DispatchQueue.main.async {
+                    self.delegate?.getRelatedJobsListFailed(message: errorMessage)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.delegate?.getRelatedJobsListSuccessed(data: responseData)
+                }
+            }
+            
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            DispatchQueue.main.async {
+                self.delegate?.getRelatedJobsListFailed(message: error.localizedDescription)
+            }
+        }
+    }
+    
     func getListJobs(beginsWith: String) {
         NetworkUtils.shared.request(url: AppURL.getJobs(beginsWith: beginsWith), method: .requestTypeGet, param: nil, header: nil, taskId: nil, completion: { [weak self] (statusCode, data) in
             guard let `self` = self else { return }

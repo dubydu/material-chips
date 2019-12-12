@@ -11,62 +11,49 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="gTV-IL-0wX" customClass="JobsSelectedItem" customModule="Chips_Dev" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="208" height="45"/>
+            <rect key="frame" x="0.0" y="0.0" width="149" height="36"/>
             <autoresizingMask key="autoresizingMask"/>
             <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                <rect key="frame" x="0.0" y="0.0" width="208" height="45"/>
+                <rect key="frame" x="0.0" y="0.0" width="149" height="36"/>
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ySn-iA-UDF">
-                        <rect key="frame" x="0.0" y="5" width="208" height="35"/>
+                        <rect key="frame" x="0.0" y="0.0" width="149" height="34"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFY-fG-0pT">
-                                <rect key="frame" x="10" y="6" width="46" height="23"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.39607843139999999" green="0.39607843139999999" blue="0.39607843139999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EFY-fG-0pT">
+                                <rect key="frame" x="10" y="2" width="97" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GCi-zl-LNi" customClass="RatingView" customModule="SI1_RatingView">
-                                <rect key="frame" x="61" y="10" width="100" height="15"/>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="IIN-Br-gNO"/>
-                                </constraints>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="normalImage" value="ic_vote_outlined"/>
-                                    <userDefinedRuntimeAttribute type="image" keyPath="fullImage" value="ic_vote_filled"/>
-                                </userDefinedRuntimeAttributes>
-                            </view>
                             <button opaque="NO" alpha="0.5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RFZ-GT-l1p">
-                                <rect key="frame" x="181" y="9" width="17" height="17"/>
+                                <rect key="frame" x="117" y="6" width="22" height="22"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="RFZ-GT-l1p" secondAttribute="height" multiplier="1:1" id="8xU-2Z-B4L"/>
                                 </constraints>
-                                <state key="normal" image="ic_cancel_circle"/>
+                                <state key="normal" image="ic_cancel_circle_filled"/>
+                                <connections>
+                                    <action selector="touchUpInsideClear:" destination="gTV-IL-0wX" eventType="touchUpInside" id="4Sq-77-l4Z"/>
+                                </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.77647058823529413" green="0.6470588235294118" blue="0.98431372549019602" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="bottom" secondItem="EFY-fG-0pT" secondAttribute="bottom" constant="2" id="0e1-iZ-js6"/>
+                            <constraint firstAttribute="height" constant="34" id="1Fx-o7-W54"/>
                             <constraint firstAttribute="trailing" secondItem="RFZ-GT-l1p" secondAttribute="trailing" constant="10" id="9gx-1R-NpR"/>
                             <constraint firstItem="EFY-fG-0pT" firstAttribute="leading" secondItem="ySn-iA-UDF" secondAttribute="leading" constant="10" id="ITD-WA-AnK"/>
-                            <constraint firstItem="GCi-zl-LNi" firstAttribute="leading" secondItem="EFY-fG-0pT" secondAttribute="trailing" constant="5" id="IVe-ug-zZc"/>
-                            <constraint firstItem="GCi-zl-LNi" firstAttribute="top" secondItem="ySn-iA-UDF" secondAttribute="top" constant="10" id="Rtv-tN-FqQ"/>
-                            <constraint firstItem="EFY-fG-0pT" firstAttribute="top" secondItem="ySn-iA-UDF" secondAttribute="top" constant="6" id="SzU-du-jPn"/>
-                            <constraint firstItem="RFZ-GT-l1p" firstAttribute="leading" secondItem="GCi-zl-LNi" secondAttribute="trailing" constant="20" id="e1L-cF-c4W"/>
-                            <constraint firstAttribute="bottom" secondItem="RFZ-GT-l1p" secondAttribute="bottom" constant="9" id="jUD-Kv-vzu"/>
-                            <constraint firstAttribute="bottom" secondItem="GCi-zl-LNi" secondAttribute="bottom" constant="10" id="l9i-Cr-YjF"/>
-                            <constraint firstAttribute="bottom" secondItem="EFY-fG-0pT" secondAttribute="bottom" constant="6" id="nyD-tp-4vH"/>
-                            <constraint firstItem="RFZ-GT-l1p" firstAttribute="top" secondItem="ySn-iA-UDF" secondAttribute="top" constant="9" id="v2T-8H-fny"/>
+                            <constraint firstItem="RFZ-GT-l1p" firstAttribute="leading" secondItem="EFY-fG-0pT" secondAttribute="trailing" constant="10" id="d3D-mS-enl"/>
+                            <constraint firstItem="EFY-fG-0pT" firstAttribute="top" secondItem="ySn-iA-UDF" secondAttribute="top" constant="2" id="hz8-Yv-O62"/>
+                            <constraint firstAttribute="bottom" secondItem="RFZ-GT-l1p" secondAttribute="bottom" constant="6" id="jUD-Kv-vzu"/>
+                            <constraint firstItem="RFZ-GT-l1p" firstAttribute="top" secondItem="ySn-iA-UDF" secondAttribute="top" constant="6" id="v2T-8H-fny"/>
                         </constraints>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                <real key="value" value="15"/>
-                            </userDefinedRuntimeAttribute>
-                            <userDefinedRuntimeAttribute type="number" keyPath="borderWidth">
-                                <real key="value" value="1"/>
+                                <real key="value" value="17"/>
                             </userDefinedRuntimeAttribute>
                             <userDefinedRuntimeAttribute type="color" keyPath="borderColor">
-                                <color key="value" red="0.64908522369999999" green="0.71644634009999997" blue="0.76863771680000004" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="value" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </userDefinedRuntimeAttribute>
                         </userDefinedRuntimeAttributes>
                     </view>
@@ -74,18 +61,19 @@
             </view>
             <constraints>
                 <constraint firstAttribute="trailing" secondItem="ySn-iA-UDF" secondAttribute="trailing" id="L3j-B0-pZQ"/>
-                <constraint firstItem="ySn-iA-UDF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="XCn-nG-ac3"/>
-                <constraint firstAttribute="bottom" secondItem="ySn-iA-UDF" secondAttribute="bottom" constant="5" id="ue7-OO-3NM"/>
+                <constraint firstItem="ySn-iA-UDF" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" id="XCn-nG-ac3"/>
+                <constraint firstAttribute="bottom" secondItem="ySn-iA-UDF" secondAttribute="bottom" constant="2" id="ue7-OO-3NM"/>
                 <constraint firstItem="ySn-iA-UDF" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" id="whe-eE-xc2"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>
-            <size key="customSize" width="208" height="41"/>
-            <point key="canvasLocation" x="49.275362318840585" y="126.89732142857142"/>
+            <size key="customSize" width="149" height="41"/>
+            <connections>
+                <outlet property="jobTitleLabel" destination="EFY-fG-0pT" id="9EZ-fD-ndF"/>
+            </connections>
+            <point key="canvasLocation" x="-28.260869565217394" y="63.616071428571423"/>
         </collectionViewCell>
     </objects>
     <resources>
-        <image name="ic_cancel_circle" width="24" height="24"/>
-        <image name="ic_vote_filled" width="24" height="24"/>
-        <image name="ic_vote_outlined" width="24" height="24"/>
+        <image name="ic_cancel_circle_filled" width="24" height="24"/>
     </resources>
 </document>

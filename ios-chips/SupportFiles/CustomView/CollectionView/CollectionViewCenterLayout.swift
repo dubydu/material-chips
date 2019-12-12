@@ -14,6 +14,10 @@ class CollectionViewCenterLayout: UICollectionViewFlowLayout {
         var leftMargin = sectionInset.left
         var maxY: CGFloat = -1.0
         attributes?.forEach { layoutAttribute in
+            guard layoutAttribute.representedElementCategory == .cell else {
+                return
+            }
+            
             if layoutAttribute.frame.origin.y >= maxY {
                 leftMargin = sectionInset.left
             }

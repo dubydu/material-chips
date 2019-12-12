@@ -9,17 +9,7 @@ import UIKit
 import SI1_RatingView
 
 protocol ExpertiseDelegate: NSObjectProtocol {
-    func expertiseViewController(expertiseVC: ExpertiseVC, didSelectButtonAdd andValue: ExpertiseObject)
-}
-
-class ExpertiseObject {
-    var ratingValue: Double?
-    var comment: String?
-    
-    init(ratingValue: Double?, comment: String?) {
-        self.ratingValue = ratingValue
-        self.comment = comment
-    }
+    func expertiseViewController(expertiseVC: ExpertiseVC, didSelectButtonAdd value: ExpertiseObject)
 }
 
 class ExpertiseVC: BaseVC {
@@ -82,8 +72,11 @@ class ExpertiseVC: BaseVC {
     }
     
     @IBAction private func touchUpInsideAdd(_ sender: UIButton) {
-        if let ratingValue = ratingValue, let commentValue = commentValue {
-            self.delegate?.expertiseViewController(expertiseVC: self, didSelectButtonAdd: ExpertiseObject(ratingValue: ratingValue, comment: commentValue))
+        if let ratingValue = ratingValue, let commentValue = commentValue, let jobObject = jobObject {
+            self.dismiss(animated: true) { [weak self] in
+                guard let `self` = self else { return }
+                self.delegate?.expertiseViewController(expertiseVC: self, didSelectButtonAdd: ExpertiseObject(jobTitle: jobObject.suggestion, ratingValue: ratingValue, comment: commentValue))
+            }
         } else {
             
         }

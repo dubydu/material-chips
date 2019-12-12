@@ -33,7 +33,7 @@ class JobsObject: Codable {
         let stringBounding = string.size(withAttributes: [.font: UIFont.systemFont(ofSize: 14)])
         var newString = string
         
-        if stringBounding.width > (UIScreen.main.bounds.width - 55) {
+        if stringBounding.width > (UIScreen.main.bounds.width - 65) {
             newString = "\(newString.dropLast(15))" + "..."
             return calculateWidthFont(string: newString)
         }

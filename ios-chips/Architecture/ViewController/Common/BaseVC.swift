@@ -36,6 +36,13 @@ class BaseVC: UIViewController {
         setNavigationBar(title: title, leftBarButtons: listLeftButtons, rightBarButtons: listRightButtons)
     }
     
+    func defaultAnimation() {
+        UIView.animate(withDuration: 0.3) { [weak self] in
+            guard let `self` = self else { return }
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     // MARK: - Target
     // MARK: - IBAction
 
