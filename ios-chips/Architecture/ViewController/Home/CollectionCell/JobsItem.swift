@@ -15,7 +15,11 @@ class JobsItem: UICollectionViewCell {
         super.awakeFromNib()
     }
     
-    func setupUI(jobsObject: JobsObject? = nil, relatedJobTitleObject: RelatedJobTitleObject? = nil) {
+    func setupUI(baseJobObject: BaseJobObject? = nil,jobsObject: JobsObject? = nil, relatedJobTitleObject: RelatedJobTitleObject? = nil) {
+        if let baseJobObject = baseJobObject {
+            jobTitleLabel.text = baseJobObject.trimJobTitle()
+        }
+        
         if let jobsObject = jobsObject{
             jobTitleLabel.text = jobsObject.trimSuggestion()
         }

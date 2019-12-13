@@ -16,6 +16,8 @@ class HomeVC: BaseVC {
 
     // MARK: - IBOutlet
     @IBOutlet private weak var searchBarView: SearchBarView!
+    @IBOutlet private weak var containResultCollectionView: UIView!
+    @IBOutlet private weak var activityIndicatorView: ActivityIndicatorView!
     @IBOutlet private weak var resultCollectionView: UICollectionView!
     @IBOutlet private weak var addedCollectionView: UICollectionView!
     @IBOutlet private weak var containAddedCollectionViewHeight: NSLayoutConstraint!
@@ -27,7 +29,8 @@ class HomeVC: BaseVC {
     
     // MARK: - Properties
     private let homePresenter = HomePresenter()
-    private var listJob = [JobsObject]()
+    private var listAllJob = [BaseJobObject]()
+    private var listSearchedJob = [JobsObject]()
     private var listRelatedJob: RelatedJobsObject?
     private var listJobItemSelected = [ExpertiseObject]()
     private var jobAddedDescViewHeight: CGFloat = 40
@@ -37,8 +40,8 @@ class HomeVC: BaseVC {
     // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupData()
         setupUI()
+        setupData()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -77,10 +80,14 @@ class HomeVC: BaseVC {
             collectionView.contentInsetAdjustmentBehavior = .always
             collectionViewFlowLayout.scrollDirection = (collectionView == addedCollectionView) ? itemAddedViewHorizontal ? .horizontal : .vertical : .vertical
         }
-        
     }
     
-    private func setupData() { }
+    private func setupData() {
+        homePresenter.getListJobs(offset: 0, limit: 45)
+    }
+    
+    private func resetData() {
+    }
     
     // MARK: - Private Method
     private func updateUI() {
@@ -107,6 +114,7 @@ class HomeVC: BaseVC {
     @IBAction private func touchUpInsideCollapse(_ sender: UIButton) {
         collapseButton.isSelected.toggle()
         containAddedCollectionViewHeight.constant = collapseButton.isSelected ? jobAddedDescViewHeight : (addedCollectionView.contentSize.height + jobAddedDescViewHeight)
+        viewStateButton.isHidden = collapseButton.isSelected
         defaultAnimation()
     }
     
@@ -123,12 +131,15 @@ class HomeVC: BaseVC {
 extension HomeVC: HomeDelegate {
     func getJobsListSuccessed(data: [JobsObject]?) {
         if let data = data {
-            listJob.removeAll()
-            listJob = data
+            listSearchedJob.removeAll()
+            listSearchedJob = data
         }
         
-        if !listJob.isEmpty, let uuid = listJob[0].uuid {
+        if !listSearchedJob.isEmpty, let uuid = listSearchedJob[0].uuid {
             homePresenter.getListRelatedJobs(uuid: uuid)
+            
+            // Reset listBaseJobs
+            listAllJob.removeAll()
             return
         }
         searchBarView.transformSearchImageView(isLoading: false)
@@ -148,6 +159,19 @@ extension HomeVC: HomeDelegate {
     func getRelatedJobsListFailed(message: String) {
         print("DEBUG: ---- \(message)")
         searchBarView.transformSearchImageView(isLoading: false)
+    }
+    
+    func getAllJobsListSuccessed(data: [BaseJobObject]?) {
+        if let data = data {
+            listAllJob = data.dropLast()
+        }
+        resultCollectionView.reloadData()
+        activityIndicatorView.removeFromSuperview()
+    }
+    
+    func getAllJobsListFailed(message: String) {
+        print("DEBUG: ---- \(message)")
+        activityIndicatorView.removeFromSuperview()
     }
 }
 
@@ -186,7 +210,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     // MARK: - UICollectionViewDataSource
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         if collectionView == resultCollectionView {
-            return ResultCollectionViewSectionType.allCases.count
+            return listSearchedJob.isEmpty ? 1 : ResultCollectionViewSectionType.allCases.count
         } else {
             return 1
         }
@@ -197,7 +221,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             guard let sectionType = ResultCollectionViewSectionType(rawValue: section) else { return 0 }
             switch sectionType {
             case .result:
-                return listJob.count
+                return listAllJob.isEmpty ? listSearchedJob.count : listAllJob.count
             case .related:
                 return listRelatedJob?.relatedJobTitles?.count ?? 0
             }
@@ -217,8 +241,14 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             let item = collectionView.dequeue(JobsItem.self, forIndexPath: indexPath)
             switch sectionType {
             case .result:
-                if listJob.count > indexPath.item {
-                    item.setupUI(jobsObject: listJob[indexPath.item])
+                if listAllJob.isEmpty {
+                    if listSearchedJob.count > indexPath.item {
+                        item.setupUI(jobsObject: listSearchedJob[indexPath.item])
+                    }
+                } else {
+                    if listAllJob.count > indexPath.item {
+                        item.setupUI(baseJobObject: listAllJob[indexPath.item])
+                    }
                 }
                 return item
             case .related:
@@ -246,8 +276,8 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
             guard let sectionType = ResultCollectionViewSectionType(rawValue: indexPath.section) else { return }
             switch sectionType {
             case .result:
-                if listJob.count > indexPath.count {
-                    let expertiseVC = ExpertiseVC(jobObject: listJob[indexPath.item])
+                if listSearchedJob.count > indexPath.count {
+                    let expertiseVC = ExpertiseVC(jobObject: listSearchedJob[indexPath.item])
                     expertiseVC.delegate = self
                     AppDelegate.shared?.baseTabbar.present(expertiseVC, animated: true)
                 }
@@ -258,7 +288,7 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return collectionView == resultCollectionView ? CGSize(width: UIScreen.main.bounds.width, height: listJob.isEmpty ? 0 : 50) : .zero
+        return collectionView == resultCollectionView ? CGSize(width: UIScreen.main.bounds.width, height: listAllJob.isEmpty ? (listSearchedJob.isEmpty ? 0 : 50) : 50) : .zero
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
@@ -268,9 +298,11 @@ extension HomeVC: UICollectionViewDelegate, UICollectionViewDataSource, UICollec
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         let headerView = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: JobSectionHeaderItem.indentifier, for: indexPath) as! JobSectionHeaderItem
         guard let sectionType = ResultCollectionViewSectionType(rawValue: indexPath.section) else { return UICollectionReusableView() }
-        headerView.setupUI(jobTitle: sectionType == .result ? """
+        headerView.setupUI(jobTitle: sectionType == .result ?
+            (!listAllJob.isEmpty ? "All Jobs" :
+            """
             Result for "\(sectionResultTitle)"
-            """ : "Related Job Categories")
+            """ ): "Related Job Categories")
         return headerView
     }
 }

@@ -8,6 +8,9 @@
 import Foundation
 
 protocol HomeDelegate: NSObjectProtocol {
+    func getAllJobsListSuccessed(data: [BaseJobObject]?)
+    func getAllJobsListFailed(message: String)
+    
     func getJobsListSuccessed(data: [JobsObject]?)
     func getJobsListFailed(message: String)
     
@@ -16,6 +19,9 @@ protocol HomeDelegate: NSObjectProtocol {
 }
 
 extension HomeDelegate {
+    public func getAllJobsListSuccessed(data: [BaseJobObject]?) { }
+    public func getAllJobsListFailed(message: String) { }
+    
     public func getJobsListSuccessed(data: [JobsObject]?) { }
     public func getJobsListFailed(message: String) { }
     

@@ -18,10 +18,10 @@
                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6pd-Ay-1Ux">
-                        <rect key="frame" x="16" y="5" width="167" height="40"/>
+                        <rect key="frame" x="16" y="5" width="172" height="40"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Uhj-Ih-beA">
-                                <rect key="frame" x="15" y="0.0" width="137" height="40"/>
+                                <rect key="frame" x="15" y="0.0" width="142" height="40"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="L7m-fX-J13"/>
                                 </constraints>
@@ -52,7 +52,7 @@
             <constraints>
                 <constraint firstAttribute="bottom" secondItem="6pd-Ay-1Ux" secondAttribute="bottom" constant="5" id="Q6G-oO-9a2"/>
                 <constraint firstItem="6pd-Ay-1Ux" firstAttribute="top" secondItem="gTV-IL-0wX" secondAttribute="top" constant="5" id="U9h-93-Ef6"/>
-                <constraint firstAttribute="trailing" secondItem="6pd-Ay-1Ux" secondAttribute="trailing" constant="5" id="dw9-0x-3Pk"/>
+                <constraint firstAttribute="trailing" secondItem="6pd-Ay-1Ux" secondAttribute="trailing" id="dw9-0x-3Pk"/>
                 <constraint firstItem="6pd-Ay-1Ux" firstAttribute="leading" secondItem="gTV-IL-0wX" secondAttribute="leading" constant="16" id="yEf-14-z9Q"/>
             </constraints>
             <viewLayoutGuide key="safeArea" id="ZTg-uK-7eu"/>

@@ -59,4 +59,33 @@ class HomePresenter: BasePresenter {
             }
         }
     }
+    
+    func getListJobs(offset: Int, limit: Int) {
+        NetworkUtils.shared.request(url: AppURL.getJobs(offset: offset, limit: limit), method: .requestTypeGet, param: nil, header: nil, taskId: nil, completion: { [weak self] (statusCode, data) in
+            guard let `self` = self else { return }
+            let response = self.processResponseData(statusCode: statusCode, data: data, objectConvert: [BaseJobObject].self)
+            let errorMessage = response.errorMessage
+            let responseData = response.responseData
+            
+            if let errorMessage = errorMessage, !errorMessage.isEmpty {
+                DispatchQueue.main.async {
+                    self.delegate?.getAllJobsListFailed(message: errorMessage)
+                }
+            } else {
+                DispatchQueue.main.async {
+                    self.delegate?.getAllJobsListSuccessed(data: responseData)
+                }
+            }
+            
+        }) { [weak self] (error) in
+            guard let `self` = self else { return }
+            DispatchQueue.main.async {
+                self.delegate?.getAllJobsListFailed(message: error.localizedDescription)
+            }
+        }
+    }
+    
+    func getIndexTitleForCollectionView() -> [String] {
+        return "ABCDEFGHIJKLMNOPQRSTUVWXYZ".compactMap { String($0) }
+    }
 }
