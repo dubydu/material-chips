@@ -12,6 +12,10 @@ class AppURL {
     static let baseURL = "http://api.dataatwork.org/"
     
     // GET METHODS
+    static func getJobs(offset: Int, limit: Int) -> String {
+        return "\(baseURL)v1/jobs?offset=\(offset)&limit=\(limit)"
+    }
+    
     static func getJobs(contains: String) -> String {
         return "\(baseURL)v1/jobs/autocomplete?contains=\(contains)"
     }

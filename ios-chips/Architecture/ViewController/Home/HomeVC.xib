@@ -10,9 +10,11 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="HomeVC" customModule="Chips_Dev" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicatorView" destination="Pbb-Dh-mKm" id="Tjm-kb-gie"/>
                 <outlet property="addedCollectionView" destination="5re-Jh-SxL" id="jzg-gX-tAH"/>
                 <outlet property="collapseButton" destination="lF9-Fz-UOR" id="aai-mD-hLH"/>
                 <outlet property="containAddedCollectionViewHeight" destination="Xe6-pO-mo2" id="3a9-fN-o64"/>
+                <outlet property="containResultCollectionView" destination="NWu-sL-arV" id="oZb-ty-Ujv"/>
                 <outlet property="jobAddedButton" destination="U1c-kg-eCn" id="qwE-sL-CGg"/>
                 <outlet property="jobAddedDescView" destination="R7b-E9-bZ1" id="xbB-yh-QJa"/>
                 <outlet property="noJobDescView" destination="bVe-kp-WH5" id="1kw-ns-Mtc"/>
@@ -77,8 +79,8 @@
                                             <constraints>
                                                 <constraint firstAttribute="width" secondItem="lF9-Fz-UOR" secondAttribute="height" multiplier="1:1" id="JLl-eU-2MD"/>
                                             </constraints>
-                                            <state key="normal" image="ic_expanded"/>
-                                            <state key="selected" image="ic_collapsed"/>
+                                            <state key="normal" image="ic_collapsed"/>
+                                            <state key="selected" image="ic_expanded"/>
                                             <connections>
                                                 <action selector="touchUpInsideCollapse:" destination="-1" eventType="touchUpInside" id="x3V-OJ-gSy"/>
                                             </connections>
@@ -161,7 +163,7 @@
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NWu-sL-arV">
                             <rect key="frame" x="0.0" y="99" width="375" height="568"/>
                             <subviews>
-                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" keyboardDismissMode="interactive" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="sIU-I1-yhj">
+                                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" showsVerticalScrollIndicator="NO" keyboardDismissMode="interactive" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="sIU-I1-yhj">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="568"/>
                                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="8by-P6-3nS">
@@ -171,12 +173,22 @@
                                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                     </collectionViewFlowLayout>
                                 </collectionView>
+                                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Pbb-Dh-mKm" customClass="ActivityIndicatorView" customModule="Chips_Dev" customModuleProvider="target">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="568"/>
+                                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </view>
                             </subviews>
                             <color key="backgroundColor" red="0.96490889790000001" green="0.97243183850000003" blue="0.97647303340000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                             <constraints>
+                                <constraint firstAttribute="trailing" secondItem="Pbb-Dh-mKm" secondAttribute="trailing" id="8T6-qZ-dzH"/>
+                                <constraint firstItem="Pbb-Dh-mKm" firstAttribute="leading" secondItem="NWu-sL-arV" secondAttribute="leading" id="EWE-x9-Yim"/>
                                 <constraint firstAttribute="trailing" secondItem="sIU-I1-yhj" secondAttribute="trailing" id="EbP-fc-jwk"/>
+                                <constraint firstItem="sIU-I1-yhj" firstAttribute="centerY" secondItem="NWu-sL-arV" secondAttribute="centerY" id="I5N-Fh-NGZ"/>
                                 <constraint firstItem="sIU-I1-yhj" firstAttribute="leading" secondItem="NWu-sL-arV" secondAttribute="leading" id="INb-T2-SS5"/>
                                 <constraint firstItem="sIU-I1-yhj" firstAttribute="top" secondItem="NWu-sL-arV" secondAttribute="top" id="LEb-rK-g0M"/>
+                                <constraint firstAttribute="bottom" secondItem="Pbb-Dh-mKm" secondAttribute="bottom" id="S1z-kv-Pnt"/>
+                                <constraint firstItem="sIU-I1-yhj" firstAttribute="centerX" secondItem="NWu-sL-arV" secondAttribute="centerX" id="WKY-fC-FGg"/>
+                                <constraint firstItem="Pbb-Dh-mKm" firstAttribute="top" secondItem="NWu-sL-arV" secondAttribute="top" id="mAL-Ao-hMg"/>
                                 <constraint firstAttribute="bottom" secondItem="sIU-I1-yhj" secondAttribute="bottom" id="scP-CE-qhv"/>
                             </constraints>
                         </view>

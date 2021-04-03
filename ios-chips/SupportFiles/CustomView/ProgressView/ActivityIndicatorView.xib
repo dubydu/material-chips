@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15509"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ActivityIndicatorView" customModule="Chips_Dev" customModuleProvider="target">
+            <connections>
+                <outlet property="containActivityIndicatorView" destination="0Ch-S0-S11" id="3Xi-px-SU8"/>
+                <outlet property="contentView" destination="KsV-hp-q4a" id="E2F-KK-ir7"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KsV-hp-q4a">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                    <subviews>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0Ch-S0-S11">
+                            <rect key="frame" x="147.5" y="243.5" width="80" height="80"/>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <constraints>
+                                <constraint firstAttribute="width" secondItem="0Ch-S0-S11" secondAttribute="height" multiplier="1:1" id="7A1-fh-Cuu"/>
+                                <constraint firstAttribute="width" constant="80" id="iiY-Th-gfH"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <constraints>
+                        <constraint firstItem="0Ch-S0-S11" firstAttribute="centerX" secondItem="KsV-hp-q4a" secondAttribute="centerX" id="p5N-Mi-KyQ"/>
+                        <constraint firstItem="0Ch-S0-S11" firstAttribute="centerY" secondItem="KsV-hp-q4a" secondAttribute="centerY" constant="-50" id="tEa-iR-W1V"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstItem="KsV-hp-q4a" firstAttribute="leading" secondItem="vUN-kp-3ea" secondAttribute="leading" id="Rfv-X6-30m"/>
+                <constraint firstItem="KsV-hp-q4a" firstAttribute="top" secondItem="vUN-kp-3ea" secondAttribute="top" id="fgW-Ph-bxC"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="trailing" secondItem="KsV-hp-q4a" secondAttribute="trailing" id="t04-4x-lYJ"/>
+                <constraint firstItem="vUN-kp-3ea" firstAttribute="bottom" secondItem="KsV-hp-q4a" secondAttribute="bottom" id="whS-ee-Mse"/>
+            </constraints>
+            <viewLayoutGuide key="safeArea" id="vUN-kp-3ea"/>
+            <point key="canvasLocation" x="138.40000000000001" y="152.47376311844079"/>
+        </view>
+    </objects>
+</document>
